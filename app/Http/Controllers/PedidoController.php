@@ -86,10 +86,10 @@ class PedidoController extends Controller
     {
     }
 
-    public function index($id = null) 
+    public function index($id = null)
     {
         return response()->json(PedidoViewModel::getConta($id));
-    } 
+    }
 
     public function foto($id) {
         $path = storage_path('/images/fotos/');
@@ -107,7 +107,7 @@ class PedidoController extends Controller
         $response->header("Content-Type", $type);
         return $response;
     }
-    
+
     public function som($id) {
         $path = storage_path('/sons/');
         $som = $path . $id . '.mp3';
@@ -136,15 +136,15 @@ class PedidoController extends Controller
         return $response;
     }
 
-    public function pedidosSuite($suite_id = null, $status = 'TODOS') 
+    public function pedidosSuite($suite_id = null, $status = 'TODOS')
     {
         return response()->json(PedidoViewModel::getPedidosSuite($suite_id, $status));
-    } 
+    }
 
-    public function pedidosMesa($id, $mesa) 
+    public function pedidosMesa($id, $mesa)
     {
         return response()->json(PedidoViewModel::getPedidosMesa($id, $mesa));
-    } 
+    }
 
     public function apartamentos($id) {
         return response()->json(PedidoViewModel::getApartamentos($id));
@@ -162,27 +162,27 @@ class PedidoController extends Controller
         return response()->json(PedidoViewModel::baixaAlarme($id, $suite, $funcionario));
     }
 
-    public function recuperarCardapios($id) 
+    public function recuperarCardapios($id)
     {
         return response()->json(PedidoViewModel::getCardapios($id));
     }
 
-    public function trocarItemMesa($id, $item_id, $mesa_atual, $nova_mesa) 
+    public function trocarItemMesa($id, $item_id, $mesa_atual, $nova_mesa)
     {
         return response()->json(PedidoViewModel::trocarItemMesa($id, $item_id, $mesa_atual, $nova_mesa));
     }
-    
-    public function insert(Request $request) 
+
+    public function insert(Request $request)
     {
         return response()->json(PedidoViewModel::insereItem($request->getContent()));
     }
 
-    public function login(Request $request) 
+    public function login(Request $request)
     {
         return response()->json(PedidoViewModel::entrar($request->getContent()));
     }
 
-    public function fecharPedido(Request $request) 
+    public function fecharPedido(Request $request)
     {
         return response()->json(PedidoViewModel::fecharPedido($request->getContent()));
     }
@@ -199,31 +199,36 @@ class PedidoController extends Controller
         return response()->json(PedidoViewModel::removeDoCarrinhoMesa($id, $mesa, $item));
     }
 
-    public function products($id, $cardapio) 
+    public function products($id, $cardapio)
     {
         return response()->json(PedidoViewModel::getProdutos($id, $cardapio));
-    } 
- 
+    }
+
+    public function obterHistoricoQuarto($id, $idQuarto)
+    {
+        return response()->json(PedidoViewModel::getHistoricoQuarto($id, $idQuarto));
+    }
+
     public function photo($name = null){
 
         $file = null;
         $foto = storage_path('/images/produtos/' . $name);
 
         try {
-            
+
             $file = File::get($foto);
 
         } catch (\Throwable $th) {
-          
+
             $foto = storage_path('/images/produtos/camera.png');
 
             $file = File::get($foto);
-            
+
         }
 
         $response = Response::make($file, 200);
         $response->header("Content-Type", File::mimeType($foto));
-    
+
         return $response;
 
     }

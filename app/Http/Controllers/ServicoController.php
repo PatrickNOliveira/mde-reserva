@@ -16,7 +16,7 @@ class ServicoController extends Controller
     {
         $data = json_decode($request->getContent(), true);
         $rs = ServicoViewModel::alteraStatusSuite($id, $suite, $status, $data);
-        return response()->json(true);
+        return response()->json($rs);
     }
 
     public function obterSituacaoUH($id, $atual, $futura)

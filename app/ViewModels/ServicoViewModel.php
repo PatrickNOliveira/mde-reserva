@@ -18,14 +18,13 @@ class ServicoViewModel extends ViewModel
         $conta = PedidoViewModel::getConta($id);
         $sql = "EXEC AlteraSituacaoApartamento '{$conta['codigo']}', '{$suite}', '{$status}', '{$data['obs']}', '{$data['dtInicio']}', '{$data['dtFim']}'";
         $rs = PedidoViewModel::callStoredProcedure($sql);
-        return [];
+        return $rs;
     }
 
     public static function obterSituacaoUH($atual, $futura, $id)
     {
         $conta = PedidoViewModel::getConta($id);
         $sql = "EXEC SituacaoUH '{$atual}', '{$futura}', '{$conta['codigo']}'";
-        $rs = PedidoViewModel::callStoredProcedure($sql);
-        return $rs;
+        return PedidoViewModel::callStoredProcedure($sql);
     }
 }

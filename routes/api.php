@@ -46,6 +46,8 @@ Route::delete('/order/cart/waiter/{id}/{mesa}/{item}', 'PedidoController@carrinh
 
 Route::get('/cardapios/{id}', 'PedidoController@recuperarCardapios');
 
+Route::get('/historico/{id}/{idQuart}', 'PedidoController@obterHistoricoQuarto');
+
 Route::post('/order/cart', 'PedidoController@fecharPedido'); // OK
 
 Route::post('/order', 'PedidoController@insert');  // OK
