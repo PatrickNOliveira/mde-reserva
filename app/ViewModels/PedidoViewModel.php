@@ -338,7 +338,8 @@ class PedidoViewModel extends ViewModel
                 'NrHospede' => $item['NrHospede'],
                 'SitAtual' => $item['SitAtual'],
                 'SitFutura' => $item['SitFutura'],
-                'Notificacao' => $item['Notificacao']
+                'Notificacao' => $item['Notificacao'],
+                'NomeHospede' => $item['NomeHospede']
             );
         }
 

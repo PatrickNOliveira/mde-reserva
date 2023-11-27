@@ -29,6 +29,7 @@ Route::get('/order/info/{id}', 'PedidoController@index'); // OK
 Route::get('/order/products/{id}/{cardapio}', 'PedidoController@products'); // OK
 Route::get('/order/photo/{name}', 'PedidoController@photo'); // OK
 Route::get('/order/photo/', 'PedidoController@photo'); // OK
+Route::post('/logo/{id}', 'PedidoController@uploadImage'); // OK
 
 //Route::delete('/order/consumer/{id}/{order}', 'PedidoController@removePedidoSuite'); // OK
 //Route::delete('/order/consumer/{id}/{order}/{item}', 'PedidoController@removePedidoSuite'); // OK
