@@ -1,14 +1,15 @@
-@extends('layouts.main')
-@section('content')
 
-    @include('layouts.reserva')
+<?php $__env->startSection('content'); ?>
 
-    <form method="post" action="{{ url('/hospede/') }}" accept-charset="utf-8" enctype="multipart/form-data">
+    <?php echo $__env->make('layouts.reserva', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-        {{ csrf_field() }}
+    <form method="post" action="<?php echo e(url('/hospede/')); ?>" accept-charset="utf-8" enctype="multipart/form-data">
+
+        <?php echo e(csrf_field()); ?>
+
 
         <hr />
-        <h3><span class="fa fa-user"></span> Hóspede nº {{ $viewModel->Pos }}</h3>
+        <h3><span class="fa fa-user"></span> Hóspede nº <?php echo e($viewModel->Pos); ?></h3>
         <hr />
 
         <div class="form-group">
@@ -18,7 +19,7 @@
                     class="form-control"
                     name="cliente_CgcCpf" size="50"
                     id="cpf"
-                    value="{{ $viewModel->cliente()->CgcCpf }}"
+                    value="<?php echo e($viewModel->cliente()->CgcCpf); ?>"
                     <?php echo (
                         $viewModel->hospede()->NrHospede > 0 &&
                         trim(strlen($viewModel->cliente()->CgcCpf)) > 0) ? 'readonly' : '' ?>
@@ -29,84 +30,84 @@
                 <input type="text"
                     class="form-control"
                     name="cliente_Nome" size="50"
-                    value="{{ $viewModel->cliente()->Nome }}" required>
+                    value="<?php echo e($viewModel->cliente()->Nome); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_DtNasc">Dt. Nascimento</label>
                 <input type="date"
                     class="form-control"
                     name="cliente_DtNasc" size="50"
-                    value="{{ $viewModel->cliente()->dtnasc() }}">
+                    value="<?php echo e($viewModel->cliente()->dtnasc()); ?>">
             </div>
             <div class="col-md-6">
                 <label for="cliente_Email">Email</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Email" size="50"
-                    value="{{ $viewModel->cliente()->Email }}" required>
+                    value="<?php echo e($viewModel->cliente()->Email); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_FoneRes">Documento Estrangeiro</label>
                 <input type="text"
                        class="form-control"
                        name="cliente_OutrosDoc" size="50"
-                       value="{{ $viewModel->cliente()->OutrosDoc }}">
+                       value="<?php echo e($viewModel->cliente()->OutrosDoc); ?>">
             </div>
             <div class="col-md-6">
                 <label for="cliente_FoneRes">Profissão</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Profissao" size="50"
-                    value="{{ $viewModel->cliente()->Profissao }}" required>
+                    value="<?php echo e($viewModel->cliente()->Profissao); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_FoneCom">RG</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Inscricao" size="50"
-                    value="{{ $viewModel->cliente()->Inscricao }}" required>
+                    value="<?php echo e($viewModel->cliente()->Inscricao); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_FoneCel">Fone Celular</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_FoneCel" size="50"
-                    value="{{ $viewModel->cliente()->FoneCel }}" required>
+                    value="<?php echo e($viewModel->cliente()->FoneCel); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_Endereco">Endereço</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Endereco" size="50"
-                    value="{{ $viewModel->cliente()->Endereco }}" required>
+                    value="<?php echo e($viewModel->cliente()->Endereco); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_Nr">Número</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Nr" size="50"
-                    value="{{ $viewModel->cliente()->Nr }}" required>
+                    value="<?php echo e($viewModel->cliente()->Nr); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_Comp">Complemento</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Comp" size="50"
-                    value="{{ $viewModel->cliente()->Comp }}">
+                    value="<?php echo e($viewModel->cliente()->Comp); ?>">
             </div>
             <div class="col-md-6">
                 <label for="cliente_Bairro">Bairro</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Bairro" size="50"
-                    value="{{ $viewModel->cliente()->Bairro }}" required>
+                    value="<?php echo e($viewModel->cliente()->Bairro); ?>" required>
             </div>
             <div class="col-md-6">
                 <label for="cliente_Cidade">Cidade</label>
                 <input type="text"
                     class="form-control"
                     name="cliente_Cidade" size="50"
-                    value="{{ $viewModel->cliente()->Cidade }}" required>
+                    value="<?php echo e($viewModel->cliente()->Cidade); ?>" required>
             </div>
 
             <div class="col-md-6">
@@ -115,7 +116,7 @@
                     class="form-control"
                     name="cliente_UF"
                     id="cliente_UF"
-                    value="{{ $viewModel->cliente()->UF}}" required>
+                    value="<?php echo e($viewModel->cliente()->UF); ?>" required>
                     <option id="AC" value="AC">Acre</option>
                     <option id="AL" value="AL">Alagoas</option>
                     <option id="AP" value="AP">Amapá</option>
@@ -151,27 +152,27 @@
                 <input type="number"
                     class="form-control"
                     name="cliente_Cep"
-                    value="{{ $viewModel->cliente()->Cep }}" required>
+                    value="<?php echo e($viewModel->cliente()->Cep); ?>" required>
             </div>
 
             <div class="col-md-6">
                 <label for="hospede_ObsHospede">Observação</label>
                 <textarea type="text" rows="6"
                     class="form-control"
-                    name="hospede_ObsHospede">{{ $viewModel->hospede()->ObsHospede }}</textarea>
+                    name="hospede_ObsHospede"><?php echo e($viewModel->hospede()->ObsHospede); ?></textarea>
             </div>
 
             <div class="col-md-6">
 
-            @if ($viewModel->hotel()->UsaFotoPreCheckin == 'S')
+            <?php if($viewModel->hotel()->UsaFotoPreCheckin == 'S'): ?>
                 <div class="avatar-upload">
                     <input type='file' name="imageUpload" id="imageUpload" style="display:none;" accept=".png, .jpg, .jpeg" />
                     <div class="avatar-preview">
                         <div id="imagePreview"
-                        style="background-image: url(/camera/{{ $viewModel->cliente()->CodCli }}/{{ $viewModel->reserva()->ChaveIdentificacao }});">
+                        style="background-image: url(/camera/<?php echo e($viewModel->cliente()->CodCli); ?>/<?php echo e($viewModel->reserva()->ChaveIdentificacao); ?>);">
                     </div>
                 </div>
-            @endif
+            <?php endif; ?>
                 <!--
                     <input type='file' id="imageUpload" style="display:none;" accept=".png, .jpg, .jpeg" />
                     <img id="camera" src= "/camera"/>
@@ -183,14 +184,14 @@
 
         </div>
 
-        <a class="btn btn-lg btn-secondary" href="/hospedes/{{ $viewModel->reserva()->ChaveIdentificacao }}">
+        <a class="btn btn-lg btn-secondary" href="/hospedes/<?php echo e($viewModel->reserva()->ChaveIdentificacao); ?>">
             Voltar
         </a>
 
         <button style="max-width:200px" class="btn btn-lg btn-primary" type="submit">Gravar</button>
 
-        <input type="hidden" value="{{ $viewModel->reserva()->ChaveIdentificacao }}" name="id">
-        <input type="hidden" value="{{ $viewModel->hospede()->NrHospede }}" name="hospede">
+        <input type="hidden" value="<?php echo e($viewModel->reserva()->ChaveIdentificacao); ?>" name="id">
+        <input type="hidden" value="<?php echo e($viewModel->hospede()->NrHospede); ?>" name="hospede">
 
     </form>
 
@@ -261,4 +262,6 @@
 
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /mnt/c/projetos/mde-reserva/resources/views/cadastro.blade.php ENDPATH**/ ?>

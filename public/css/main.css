@@ -89,7 +89,7 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    min-width: 260px;  
+    min-width: 260px;
     max-width: 100px;
 }
 
@@ -100,11 +100,11 @@ body {
     background: #fff;
     border-radius: 2px;
     box-sizing: border-box;
-    position: relative;            
+    position: relative;
 }
 
 .reserva {
-    border-color: #F2B203;
+    border-color: #F2B203 !important;
     box-shadow: -6px 0 0 #F2B203;
     border: 1px solid #F2B203;
 }
@@ -122,10 +122,10 @@ body {
 }
 
 .hospede {
-    border-color: #8C77D3;
-    box-shadow: -6px 0 0 #8C77D3;
-    border: 1px solid #8C77D3;
-    cursor: pointer;
+    border-color: #8C77D3 !important;
+    box-shadow: -6px 0 0 #8C77D3 !important;
+    border: 1px solid #8C77D3 !important;
+    cursor: pointer !important;
 }
 
 .check-in {
@@ -156,7 +156,7 @@ body {
     margin-bottom: 2px;
     font-size: .75em;
     line-height: normal;
-    color: #474747;    
+    color: #474747;
 }
 .tag-content {
     /* cursor: pointer; */

@@ -17,7 +17,7 @@ use DB;
 
 class ReservaController extends Controller
 {
-    
+
     public function __construct()
     {
     }
@@ -43,9 +43,9 @@ class ReservaController extends Controller
         return view('home');
     }
 
-    public function index($idReserva = 0) 
+    public function index($idReserva = 0)
     {
-        
+
         //Cliente::truncate();
         //Hospede::truncate();
         //Hospede::whereIn('PkHospedes', [2,3,4])->delete();
@@ -54,19 +54,19 @@ class ReservaController extends Controller
         $viewModel = $this->getViewModel($idReserva);
         return view('reserva', compact('viewModel'));
 
-    } 
+    }
 
     public function hospedes($idReserva = 0)
     {
         $viewModel = $this->getViewModel($idReserva);
-        return view('hospedes', compact('viewModel'));        
+        return view('hospedes', compact('viewModel'));
     }
 
-    public function cadastro($idReserva = 0, $idHospede = 0, $pos = 1) 
+    public function cadastro($idReserva = 0, $idHospede = 0, $pos = 1)
     {
         $viewModel = $this->getViewModel($idReserva, $idHospede, $pos);
         return view('cadastro', compact('viewModel'));
-    }  
+    }
 
     private function getHospedeMaster($reserva)
     {
@@ -106,14 +106,14 @@ class ReservaController extends Controller
         $request->validate([
             'imageUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        
+
         $folder = storage_path('images/fotos/');
-        $name =  $request->input('id') . '_' . 
-                 $idCliente  . '.' . 
+        $name =  $request->input('id') . '_' .
+                 $idCliente  . '.' .
                  $image->getClientOriginalExtension();
 
         $request->imageUpload->move($folder, $name);
-        
+
         return $name;
 
     }
@@ -126,7 +126,6 @@ class ReservaController extends Controller
         $reserva = $viewModel->reserva;
         $hospede = $viewModel->hospede;
         $cliente = Cliente::where("Cgccpf", $request->cliente_CgcCpf)->first() ?? $viewModel->cliente;
-
         $cliente = $this->update($cliente, $this->filter($request->input(), 'cliente_'));
         $cliente->Status = 'E';
 
@@ -149,9 +148,9 @@ class ReservaController extends Controller
         $hospede->NumApto     = $reserva->NumApto;
         $hospede->NomeHospede = $cliente->Nome;
         $hospede->Status      = 'E';
-        
+
         $hospede->save();
-        
+
         return redirect('hospedes/' . $request->id);
 
     }
@@ -166,15 +165,15 @@ class ReservaController extends Controller
             $foto = storage_path('images/camera.png');
             if (!File::exists($foto)) abort(404);
         }
-    
+
         $file = File::get($foto);
         $type = File::mimeType($foto);
-    
+
         $response = Response::make($file, 200);
         $response->header("Content-Type", $type);
-    
+
         return $response;
-    
+
     }
 
 }
