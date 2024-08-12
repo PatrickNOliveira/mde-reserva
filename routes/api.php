@@ -58,6 +58,7 @@ Route::post('/entrar', 'PedidoController@login');
 Route::post('/mesa/{id}/{item}/{mesa_atual}/{nova_mesa}', 'PedidoController@trocarItemMesa');
 
 Route::get('/rooms/{id}', 'PedidoController@apartamentos');
+Route::get('/lista-obs/{id}', 'PedidoController@listaObs');
 
 Route::get('/notify/{id}', 'PedidoController@notificacoes');
 

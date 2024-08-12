@@ -188,6 +188,11 @@ class PedidoController extends Controller
         return response()->json(PedidoViewModel::getApartamentos($id));
     }
 
+    public function listaObs($id)
+    {
+        return response()->json(PedidoViewModel::getListaObs($id));
+    }
+
     public function notificacoes($id)
     {
         return response()->json(PedidoViewModel::getNotificacoes($id));

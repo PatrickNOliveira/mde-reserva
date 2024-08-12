@@ -317,6 +317,34 @@ class PedidoViewModel extends ViewModel
 
     }
 
+    public static function getListaObs($id)
+    {
+        $conta = Self::getConta($id);
+
+        $sql = 'EXEC ListaObsPrato "' . $conta['codigo'] . '"';
+
+        $rs = Self::callStoredProcedure($sql);
+
+        //Log::Debug("============= RESPONSE =============");
+        //Log::Debug($rs);
+        //Log::Debug("============= RESPONSE =============");
+        $result = array();
+        foreach ($rs[0] as $item) {
+            $result[] = array(
+                'id' => $item['PkObsPrato'],
+                'Codigo' => $item['Codigo'],
+                'ObsPrato' => $item['ObsPrato'],
+                'Ativo' => $item['Ativo'],
+                'Status' => $item['Status'],
+            );
+        }
+
+        //Log::Debug($result);
+
+        return $result;
+
+    }
+
     public static function getApartamentos($id)
     {
         $conta = Self::getConta($id);
