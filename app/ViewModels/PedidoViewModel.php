@@ -778,8 +778,9 @@ class PedidoViewModel extends ViewModel
             " 'O'," .
             " '" . $item['nota'] . "'," .
             '' . $item['hospede'] . ',' .
-            '' . $item['cardapio'] . '';
-
+            '' . $item['cardapio'] . ',' .
+            " '" . $item['paraDescricao'] . "'," .
+            '' . $item['paraValor'] . '';
         $rs = Self::callStoredProcedure($sql);
 
         // Log::Debug("============= RESPONSE =============");
