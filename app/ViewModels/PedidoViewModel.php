@@ -1299,7 +1299,7 @@ class PedidoViewModel extends ViewModel
 
         $conta = Self::getConta($id);
 
-        $sql = 'EXEC ListaDeProdutos "' . $conta['codigo'] . '","' . $cardapio . '"';
+        $sql = 'EXEC ListaDeProdutos "' . $conta['codigo'] . '","' . 1 . '"';
 
         $rs = Self::callStoredProcedure($sql);
 
@@ -1321,7 +1321,9 @@ class PedidoViewModel extends ViewModel
                 'tipo' => $item['Nome'],
                 'codigo' => $item['PkProduto'],
                 'nota' => $item['Nota'],
-                'imagem' => $item['Imagem']
+                'imagem' => $item['Imagem'],
+                'paraDescricao' => $item['ParaDescricao'] === 'S',
+                'paraValor' => $item['ParaValor'] === 'S',
             );
         }
 
