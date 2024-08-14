@@ -1299,7 +1299,7 @@ class PedidoViewModel extends ViewModel
 
         $conta = Self::getConta($id);
 
-        $sql = 'EXEC ListaDeProdutos "' . $conta['codigo'] . '","' . 1 . '"';
+        $sql = 'EXEC ListaDeProdutos "' . $conta['codigo'] . '","' . $cardapio . '"';
 
         $rs = Self::callStoredProcedure($sql);
 
