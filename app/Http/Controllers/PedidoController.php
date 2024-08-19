@@ -222,6 +222,10 @@ class PedidoController extends Controller
     {
         return response()->json(PedidoViewModel::insereItem($request->getContent()));
     }
+    public function abreMesa($id, $suite)
+    {
+        return response()->json(PedidoViewModel::abreMesa($id, $suite));
+    }
 
     public function login(Request $request)
     {

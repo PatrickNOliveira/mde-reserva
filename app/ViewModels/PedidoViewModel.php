@@ -762,6 +762,14 @@ class PedidoViewModel extends ViewModel
 
     }
 
+    public static function abreMesa($id, $suite)
+    {
+        $conta = Self::getConta($id);
+        $sql = "EXEC AbreMesa {$conta['codigo']}, {$suite}";
+        Self::callStoredProcedure($sql);
+        return true;
+    }
+
     public static function insereItem($data) {
 
         $item = json_decode($data, true);

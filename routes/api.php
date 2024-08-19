@@ -59,6 +59,7 @@ Route::post('/mesa/{id}/{item}/{mesa_atual}/{nova_mesa}', 'PedidoController@troc
 
 Route::get('/rooms/{id}', 'PedidoController@apartamentos');
 Route::get('/lista-obs/{id}', 'PedidoController@listaObs');
+Route::patch('/abre-mesa/{id}/{suite}', 'PedidoController@abreMesa');
 
 Route::get('/notify/{id}', 'PedidoController@notificacoes');
 
