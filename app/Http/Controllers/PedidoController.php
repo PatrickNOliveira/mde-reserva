@@ -286,6 +286,11 @@ class PedidoController extends Controller
 
     }
 
+    public function obterDadosQrCode($id, $codigo)
+    {
+        return response()->json(PedidoViewModel::getQrCode($id, $codigo));
+    }
+
     public function removePedidoSuite($id, $pedido = null, $item = null)
     {
         return response()->json(PedidoViewModel::removePedidoSuite($id, $pedido, $item));

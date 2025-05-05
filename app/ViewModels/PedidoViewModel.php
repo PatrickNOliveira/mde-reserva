@@ -187,6 +187,13 @@ class PedidoViewModel extends ViewModel
         return $rs;
     }
 
+    public static function getQrCode($id, $codigo) {
+        $conta = Self::getConta($id);
+        $sql = "EXEC DadosDoHospedeCartao '{$conta['codigo']}', '{$codigo}'";
+        $rs = Self::callStoredProcedure($sql);
+        return $rs;
+    }
+
     // suite_id = suite_id ou numero
     public static function getCarrinhoSuite($id, $suite_id) {
 
